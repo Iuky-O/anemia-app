@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import joblib
 
+from utils.anemia_descriptions import ANEMIA_INFO
+
 # ======================
 # CARREGAR MODELOS
 # ======================
 
-model = joblib.load("models/svm_model.pkl")
+model = joblib.load("models/svm_model_91.pkl")
 scaler = joblib.load("models/scaler.pkl")
 label_encoder = joblib.load("models/label_encoder.pkl")
 
@@ -25,12 +27,6 @@ RBC = st.number_input("RBC")
 MCV = st.number_input("MCV")
 MCH = st.number_input("MCH")
 MCHC = st.number_input("MCHC")
-PDW = st.number_input("PDW")
-PCT = st.number_input("PCT")
-LYMp = st.number_input("LYMp")
-NEUTp = st.number_input("NEUTp")
-LYMn = st.number_input("LYMn")
-NEUTn = st.number_input("NEUTn")
 
 # ======================
 # BOTÃO
@@ -45,13 +41,7 @@ if st.button("Classificar"):
         RBC,
         MCV,
         MCH,
-        MCHC,
-        PDW,
-        PCT,
-        LYMp,
-        NEUTp,
-        LYMn,
-        NEUTn
+        MCHC
     ]], columns=[
         "HGB",
         "PLT",
@@ -59,13 +49,7 @@ if st.button("Classificar"):
         "RBC",
         "MCV",
         "MCH",
-        "MCHC",
-        "PDW",
-        "PCT",
-        "LYMp",
-        "NEUTp",
-        "LYMn",
-        "NEUTn"
+        "MCHC"
     ])
 
     data_scaled = scaler.transform(data)
@@ -76,7 +60,13 @@ if st.button("Classificar"):
 
     result = label_encoder.inverse_transform(prediction)
 
-    st.success(f"Diagnóstico: {result[0]}")
+    prediction_name = result[0]
+
+    st.success(f"Diagnóstico: {prediction_name}")
+
+    # ======================
+    # PROBABILIDADES
+    # ======================
 
     st.subheader("Probabilidades")
 
@@ -84,3 +74,29 @@ if st.button("Classificar"):
         st.write(
             f"{class_name}: {probabilities[0][i] * 100:.2f}%"
         )
+
+    # ======================
+    # EXPLICAÇÃO DA DOENÇA
+    # ======================
+
+    if prediction_name in ANEMIA_INFO:
+
+        info = ANEMIA_INFO[prediction_name]
+
+        st.divider()
+
+        with st.expander("📚 Ver detalhes sobre o diagnóstico"):
+
+            st.header(info['title'])
+
+            st.write(info["description"])
+
+            st.subheader("Possíveis sintomas")
+
+            for symptom in info["symptoms"]:
+                st.write(f"- {symptom}")
+
+            st.subheader("Características laboratoriais")
+
+            for characteristic in info["characteristics"]:
+                st.write(f"- {characteristic}")

@@ -14,7 +14,7 @@ from sklearn.metrics import accuracy_score
 # CARREGAR BASE
 # ======================
 
-df = pd.read_csv("data/diagnosed_cbc_data_v4.csv")
+df = pd.read_csv("data/anemia_dataset_filtrado.csv")
 
 # ======================
 # FEATURES E TARGET

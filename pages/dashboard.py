@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-df = pd.read_csv("data/diagnosed_cbc_data_v4.csv")
+df = pd.read_csv("data/anemia_dataset_filtrado.csv")
 
 st.title("📊 Dashboard")
 
