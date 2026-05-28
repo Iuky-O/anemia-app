@@ -8,9 +8,12 @@ from utils.anemia_descriptions import ANEMIA_INFO
 # CARREGAR MODELOS
 # ======================
 
-model = joblib.load("models/svm_model_91.pkl")
+model = joblib.load("models/svm_model.pkl")
 scaler = joblib.load("models/scaler.pkl")
 label_encoder = joblib.load("models/label_encoder.pkl")
+
+df_reference = pd.read_csv("data/anemia_dataset_filtrado.csv")
+feature_columns = df_reference.drop("Diagnosis", axis=1).columns.tolist()
 
 st.title("🧠 Predição de Anemia")
 
@@ -21,12 +24,12 @@ st.write("Preencha os parâmetros abaixo:")
 # ======================
 
 HGB = st.number_input("HGB")
-PLT = st.number_input("PLT")
-WBC = st.number_input("WBC")
 RBC = st.number_input("RBC")
 MCV = st.number_input("MCV")
 MCH = st.number_input("MCH")
 MCHC = st.number_input("MCHC")
+PLT = st.number_input("PLT")
+WBC = st.number_input("WBC")
 
 # ======================
 # BOTÃO
@@ -34,23 +37,20 @@ MCHC = st.number_input("MCHC")
 
 if st.button("Classificar"):
 
+    def normalize_number(value):
+        if isinstance(value, str):
+            value = value.replace(",", ".")
+        return float(value)
+
     data = pd.DataFrame([[
-        HGB,
-        PLT,
-        WBC,
-        RBC,
-        MCV,
-        MCH,
-        MCHC
-    ]], columns=[
-        "HGB",
-        "PLT",
-        "WBC",
-        "RBC",
-        "MCV",
-        "MCH",
-        "MCHC"
-    ])
+        normalize_number(HGB),
+        normalize_number(RBC),
+        normalize_number(MCV),
+        normalize_number(MCH),
+        normalize_number(MCHC),
+        normalize_number(PLT),
+        normalize_number(WBC)
+    ]], columns=feature_columns)
 
     data_scaled = scaler.transform(data)
 
