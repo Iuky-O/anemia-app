@@ -1,0 +1,121 @@
+(venv) C:\Users\Iumy P.F\Programas\UEPA\anemia-app>python training/train_model_advanced.py
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779987598.742276   17964 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1779987609.303655   17964 port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+
+======================================================================
+APLICANDO SMOTE NO CONJUNTO DE TREINAMENTO
+======================================================================
+Após SMOTE:
+  Amostras de treino: 1935
+  Distribuição das classes: [215 215 215 215 215 215 215 215 215]
+
+======================================================================
+TESTANDO KNN COM DIFERENTES K
+======================================================================
+
+KNN (K= 3): 0.7782 | CV: 0.7791 (+/- 0.1055)
+KNN (K= 5): 0.7860 | CV: 0.7721 (+/- 0.0978)
+KNN (K= 7): 0.7704 | CV: 0.7659 (+/- 0.1077)
+KNN (K= 9): 0.7393 | CV: 0.7612 (+/- 0.1034)
+KNN (K=11): 0.7354 | CV: 0.7627 (+/- 0.1175)
+KNN (K=15): 0.7004 | CV: 0.7385 (+/- 0.1137)
+
+✓ Melhor KNN: K=5 com acurácia 0.7860
+
+======================================================================
+TESTANDO SVM COM GRID SEARCH
+======================================================================
+
+Fitting 5 folds for each of 30 candidates, totalling 150 fits
+
+✓ Melhor SVM: {'C': 100, 'gamma': 'auto', 'kernel': 'rbf'}
+  Acurácia: 0.8872
+
+======================================================================
+TREINANDO REDE NEURAL
+======================================================================
+
+I0000 00:00:1779987639.714302   17964 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+To enable the following instructions: SSE3 SSE4.1 SSE4.2 AVX AVX2 AVX_VNNI FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
+WARNING:tensorflow:TensorFlow GPU support is not available on native Windows for TensorFlow >= 2.11. Even if CUDA/cuDNN are installed, GPU will not be used. Please use WSL2 or the TensorFlow-DirectML plugin.
+Epoch 1/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 6s 17ms/step - accuracy: 0.7054 - loss: 1.3230 - val_accuracy: 0.5268 - val_loss: 2.0729 - learning_rate: 0.0010
+Epoch 2/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 11ms/step - accuracy: 0.8279 - loss: 0.8782 - val_accuracy: 0.3122 - val_loss: 1.8847 - learning_rate: 0.0010
+Epoch 3/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 9ms/step - accuracy: 0.8687 - loss: 0.7637 - val_accuracy: 0.4683 - val_loss: 1.6968 - learning_rate: 0.0010
+Epoch 4/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 11ms/step - accuracy: 0.8760 - loss: 0.7189 - val_accuracy: 0.5659 - val_loss: 1.4373 - learning_rate: 0.0010
+Epoch 5/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.8656 - loss: 0.7087 - val_accuracy: 0.6488 - val_loss: 1.4070 - learning_rate: 0.0010
+Epoch 6/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.8837 - loss: 0.6432 - val_accuracy: 0.8244 - val_loss: 1.1119 - learning_rate: 0.0010
+Epoch 7/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9044 - loss: 0.5999 - val_accuracy: 0.8195 - val_loss: 1.2199 - learning_rate: 0.0010
+Epoch 8/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9044 - loss: 0.5979 - val_accuracy: 0.8390 - val_loss: 1.2411 - learning_rate: 0.0010
+Epoch 9/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9137 - loss: 0.5408 - val_accuracy: 0.8537 - val_loss: 1.3315 - learning_rate: 0.0010
+Epoch 10/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9194 - loss: 0.5422 - val_accuracy: 0.8537 - val_loss: 1.4111 - learning_rate: 0.0010
+Epoch 11/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9220 - loss: 0.5152 - val_accuracy: 0.8098 - val_loss: 1.4782 - learning_rate: 0.0010
+Epoch 12/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9158 - loss: 0.5319 - val_accuracy: 0.8390 - val_loss: 1.6877 - learning_rate: 0.0010
+Epoch 13/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9189 - loss: 0.5019 - val_accuracy: 0.8488 - val_loss: 1.4913 - learning_rate: 0.0010
+Epoch 14/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 9ms/step - accuracy: 0.9328 - loss: 0.4628 - val_accuracy: 0.8683 - val_loss: 1.6035 - learning_rate: 5.0000e-04
+Epoch 15/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9370 - loss: 0.4312 - val_accuracy: 0.8537 - val_loss: 1.4638 - learning_rate: 5.0000e-04
+Epoch 16/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9364 - loss: 0.4285 - val_accuracy: 0.8488 - val_loss: 1.5391 - learning_rate: 5.0000e-04
+Epoch 17/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9359 - loss: 0.4171 - val_accuracy: 0.8780 - val_loss: 1.4815 - learning_rate: 5.0000e-04
+Epoch 18/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9514 - loss: 0.3942 - val_accuracy: 0.8634 - val_loss: 1.2870 - learning_rate: 5.0000e-04
+Epoch 19/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9463 - loss: 0.3832 - val_accuracy: 0.8537 - val_loss: 1.3769 - learning_rate: 5.0000e-04
+Epoch 20/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 1s 8ms/step - accuracy: 0.9457 - loss: 0.3829 - val_accuracy: 0.8439 - val_loss: 1.3811 - learning_rate: 5.0000e-04
+Epoch 21/200
+61/61 ━━━━━━━━━━━━━━━━━━━━ 0s 7ms/step - accuracy: 0.9478 - loss: 0.3908 - val_accuracy: 0.8732 - val_loss: 1.3773 - learning_rate: 2.5000e-04
+
+✓ Rede Neural: Acurácia 0.8288
+
+======================================================================
+COMPARACAO FINAL DOS MODELOS
+======================================================================
+KNN (K=5): 0.7860
+SVM {'C': 100, 'gamma': 'auto', 'kernel': 'rbf'}: 0.8872
+Rede Neural: 0.8288
+
+======================================================================
+MELHOR MODELO: SVM {'C': 100, 'gamma': 'auto', 'kernel': 'rbf'}
+Acurácia: 0.8872
+======================================================================
+
+Modelo SVM {'C': 100, 'gamma': 'auto', 'kernel': 'rbf'} salvo como 'decision_tree_model.pkl'
+Scaler e Label Encoder salvos com sucesso!
+
+======================================================================
+RELATORIO DETALHADO DO MELHOR MODELO
+======================================================================
+
+                                precision    recall  f1-score   support
+
+                       Healthy       0.90      0.97      0.94        67
+        Iron deficiency anemia       0.89      0.84      0.86        38
+                      Leukemia       0.67      0.44      0.53         9
+Leukemia with thrombocytopenia       1.00      1.00      1.00         2
+             Macrocytic anemia       0.67      0.50      0.57         4
+ Normocytic hypochromic anemia       0.88      0.88      0.88        56
+Normocytic normochromic anemia       0.91      0.98      0.95        54
+       Other microcytic anemia       0.73      0.67      0.70        12
+              Thrombocytopenia       1.00      0.87      0.93        15
+
+                      accuracy                           0.89       257
+                     macro avg       0.85      0.79      0.82       257
+                  weighted avg       0.88      0.89      0.88       257

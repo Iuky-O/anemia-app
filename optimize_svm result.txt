@@ -1,0 +1,86 @@
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=sigmoid; total time=   1.5s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=poly; total time=   2.8s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=sigmoid; total time=   1.5s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=sigmoid; total time=   1.4s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=sigmoid; total time=   1.2s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=linear; total time=  23.5s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=linear; total time=  21.4s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=linear; total time=  28.3s
+[CV] END C=1000, class_weight=balanced, degree=4, gamma=1, kernel=linear; total time=  28.6s
+
+================================================================================
+TOP 10 MELHORES COMBINACOES DE PARAMETROS
+================================================================================
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'class_weight': 'balanced', 'degree': 3}
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'class_weight': 'balanced', 'degree': 2}
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'class_weight': 'balanced', 'degree': 4}
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'degree': 4}
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'degree': 3}
+
+Rank 1: CV Score = 0.9788
+  Parametros: {'kernel': 'rbf', 'C': 500.0, 'gamma': 0.1, 'degree': 2}
+
+Rank 7: CV Score = 0.9778
+  Parametros: {'kernel': 'rbf', 'C': 1000.0, 'gamma': 0.1, 'degree': 2}
+
+Rank 7: CV Score = 0.9778
+  Parametros: {'kernel': 'rbf', 'C': 1000.0, 'gamma': 0.1, 'class_weight': 'balanced', 'degree': 2}
+
+Rank 7: CV Score = 0.9778
+  Parametros: {'kernel': 'rbf', 'C': 1000.0, 'gamma': 0.1, 'class_weight': 'balanced', 'degree': 3}
+
+Rank 7: CV Score = 0.9778
+  Parametros: {'kernel': 'rbf', 'C': 1000.0, 'gamma': 0.1, 'degree': 4}
+
+================================================================================
+MELHOR MODELO ENCONTRADO
+================================================================================
+
+Parametros: {'C': 500, 'class_weight': None, 'degree': 2, 'gamma': 0.1, 'kernel': 'rbf'}
+CV Score: 0.9788
+Acurácia no Teste: 0.9027
+
+================================================================================
+RELATORIO DETALHADO
+================================================================================
+
+                                precision    recall  f1-score   support
+
+                       Healthy       0.92      0.99      0.95        67
+        Iron deficiency anemia       0.91      0.84      0.88        38
+                      Leukemia       0.80      0.44      0.57         9
+Leukemia with thrombocytopenia       1.00      1.00      1.00         2
+             Macrocytic anemia       1.00      0.75      0.86         4
+ Normocytic hypochromic anemia       0.89      0.91      0.90        56
+Normocytic normochromic anemia       0.88      0.98      0.93        54
+       Other microcytic anemia       0.80      0.67      0.73        12
+              Thrombocytopenia       1.00      0.87      0.93        15
+
+                      accuracy                           0.90       257
+                     macro avg       0.91      0.83      0.86       257
+                  weighted avg       0.90      0.90      0.90       257
+
+================================================================================
+SALVANDO MODELO
+================================================================================
+
+Modelo SVM otimizado salvo!
+Acurácia Final: 0.9027
+
+================================================================================
+COMPARACAO
+================================================================================
+
+Modelo Anterior (SVM kernel=rbf, C=100, gamma=auto): 88.72%
+Modelo Otimizado: 90.27%
+Melhoria: +1.55%
