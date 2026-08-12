@@ -4,7 +4,7 @@ Sistema inteligente para classificação de tipos de anemia utilizando Machine L
 
 O projeto utiliza parâmetros hematológicos obtidos de exames CBC (Complete Blood Count) para prever diferentes tipos de anemia através de algoritmos de classificação.
 
-O sistema em produção pode ser acessado em:
+O sistema pode ser acessado em:
 
 https://anemia-app-g4eiyxyu2xicef49hvsx2p.streamlit.app/Predi%C3%A7%C3%A3o
 
